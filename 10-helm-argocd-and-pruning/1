@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: https://github.com/anuroopps2001/argocd-example-apps-labs.git
     targetRevision: HEAD  # asking argocd to look into the latest git commit apply the manifests of that commit
-    path: guestbook
+    path: helm-guestbook
+    helm:
+      valuesFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: default # namespace, where k8s manifests will be deployed
-  syncPolicy:
-    syncOptions:
-      - Replace=true  # autosync enabled
