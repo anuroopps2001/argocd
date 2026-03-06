@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/anuroopps2001/argocd.git
+    targetRevision: HEAD
+    path: 09-sync-guestbook-application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default # namespace, where k8s manifests will be deployed
