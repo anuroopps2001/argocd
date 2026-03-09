@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-ingress-controller-application
+  namespace: argocd # for argocd application instance
+spec:
+  project: default  # where argocd managing chart resources will be created for this specific chart
+  source:
+    repoURL: https://kubernetes.github.io/ingress-nginx
+    chart: ingress-nginx
+    targetRevision: 4.14.3
+    helm:
+      values: |
+        fullnameOverride: "nginx-ing" # Stop combining names. Just use 'nginx-ing' as the base for everything.
+  destination:
+    server: https://kubernetes.default.svc  # cluster url, here it;s being deployed into local cluster
+    namespace: nginx-ingress-controller  # where actual application related resources will be deployed
