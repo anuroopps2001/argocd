@@ -4,7 +4,7 @@ metadata:
   name: presync-hook-job
   annotations:
     argocd.argoproj.io/hook: PreSync  # defines this job as PreSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded  # condition, when this job will be created
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation  #HookSucceeded  # condition, when this job will be created
 spec:
   backoffLimit: 2 # max time job can try run in case of failures
   template:
