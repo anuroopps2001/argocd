@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: guestbook-sync-and-hooks-deployment
 spec:
-  replicas: 1
+  replicas: 10
   revisionHistoryLimit: 3
   selector:
     matchLabels:
