@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: team-finance
+  namespace: argocd
+spec:
+  description: Project for the finance team
+  sourceRepos:
+    - https://github.com/anuroopps2001/argocd-example-apps-labs.git
+  destinations:  # allowed clusters and namespaces into which deployments are allowed
+    - server: https://kubernetes.default.svc
+      namespace: finance 
+  namespaceResourceWhitelist:  # list of namespace related resources allowed to deploy such as deployment, pod, svc etc
+    - group: "*"
+      kind: "*"

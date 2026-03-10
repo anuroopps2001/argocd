@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook-with-https
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/anuroopps2001/argocd-private-repos.git
+    targetRevision: HEAD  # asking argocd to look into the latest git commit apply the manifests of that commit
+    path: guestbook-application
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default 
