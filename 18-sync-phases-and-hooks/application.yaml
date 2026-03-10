@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/anuroopps2001/argocd.git
     targetRevision: HEAD  # asking argocd to look into the latest git commit apply the manifests of that commit
-    path: 18-sync-phases-and-hooks 
+    path: 18-sync-phases-and-hooks/k8s-manifest-files 
   destination:
     server: https://kubernetes.default.svc
     namespace: default
