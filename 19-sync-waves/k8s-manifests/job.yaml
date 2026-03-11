@@ -15,7 +15,7 @@ spec:
           command:
             - "sh"
             - "-c"
-            - "echo 'Trying to connect to $DB_HOST..'; sleep 5; echo 'Connected..!!'"
+            - "echo Trying to connect to $DB_HOST..; sleep 5; echo Connected..!!"
           env:
             - name: DB_HOST
               valueFrom:
