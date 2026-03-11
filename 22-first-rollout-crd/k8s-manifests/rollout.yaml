@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: simple-color-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: simple-color-app
+  strategy:
+    canary:
+      steps:
+        - setWeight: 8   # 20% of pods will be running with newer version and rest with older version
+        - pause: {}
+  template:
+    metadata:
+      labels:
+        app: simple-color-app
+    spec:
+      containers:
+        - name: app
+          image: lmacademy/simple-color-app:1.0.0
+          env:
+            - name: APP_COLOR
+              value: 'pink'
